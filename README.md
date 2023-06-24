@@ -1,2 +1,2 @@
-# my_devops_project
-DevOps Project
+# my_devops_flask_project
+Build & deploy code - flask app using Jenkins and Kubernetes
