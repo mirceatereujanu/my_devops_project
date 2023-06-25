@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: flask-app-deployment # name of the deployment
+ 
+spec:
+ template: # pod defintion
+   metadata:
+     name: flask-app # name of the pod
+     labels:
+       app: flask-app
+       tier: frontend
+   spec:
+     containers:
+       - name: flask-app
+         image: mirceatereujanu/flask-app:latest
+ replicas: 3
+ selector: # Mandatory, Select the pods which needs to be in the replicaset
+   matchLabels:
+     app: flask-app
+     tier: frontend
