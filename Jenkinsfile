@@ -21,8 +21,6 @@ pipeline {
        stage('Test') {
            steps {
                echo 'Testing..'
-               sh 'docker stop $CONTAINER_NAME || true'
-               sh 'docker rm $CONTAINER_NAME || true'
                sh 'docker run --name $CONTAINER_NAME $DOCKER_HUB_REPO /bin/bash -c "pytest test.py && flake8"'
            }
        }
@@ -38,6 +36,12 @@ pipeline {
                echo 'Deploying....'
                sh 'kubectl -- apply -f deployment.yaml'
                sh 'kubectl -- apply -f service.yaml'
+           }
+       }
+        stage('Cleanup') {
+           steps {
+                sh 'docker stop $CONTAINER_NAME || true'
+                sh 'docker rm $CONTAINER_NAME || true'
            }
        }
    }
