@@ -31,11 +31,6 @@ pipeline {
                sh 'docker push $DOCKER_HUB_REPO:latest'
            }
        }
-       stage('Check kubectl version') {
-         steps {
-                 sh 'kubectl version'
-          }
-      }
        stage('Deploy') {
            steps {
                echo 'Deploying....'
