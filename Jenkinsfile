@@ -34,6 +34,7 @@ pipeline {
        stage('Deploy') {
            steps {
                echo 'Deploying....'
+                sh 'kubectl version'
                sh 'kubectl apply -f deployment.yaml'
                sh 'kubectl apply -f service.yaml'
            }
