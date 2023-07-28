@@ -39,11 +39,11 @@ pipeline {
                sh 'kubectl apply -f service.yaml'
            }
        }
-        stage('Cleanup') {
+       /* stage('Cleanup') {
            steps {
                 sh 'docker stop $CONTAINER_NAME || true'
                 sh 'docker rm $CONTAINER_NAME || true'
            }
-       }
+       }*/
    }
 }
